@@ -84,14 +84,15 @@ body {
 .content-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centered alignment for content blocks */
-    padding: 15vh 2rem 20vh; /* Reduced top padding */
-    text-align: center; /* Centered text for container */
-    gap: 8vh; /* Reduced gap between sections */
-    max-width: 800px; /* Reduced max-width for compact look */
+    align-items: center;
+    padding: 15vh 2rem 20vh;
+    text-align: center;
+    gap: 8vh;
+    max-width: 800px;
     margin: 0 auto;
 }
 
+/* --- HERO SECTION --- */
 .hero-section {
     margin-bottom: 0;
 }
@@ -99,7 +100,8 @@ body {
 .hero-intro-text {
     color: var(--text-light);
     margin-bottom: 0.5rem;
-    text-align: left; /* Keep intro text left-aligned */
+    text-align: left;
+    display: inline-block;
 }
 
 .hero-name-wrapper {
@@ -107,14 +109,14 @@ body {
 }
 
 .hero-name {
-    font-size: 5rem; /* Reduced font size */
+    font-size: 5rem;
     font-weight: 800;
     line-height: 1.1;
-    text-align: left; /* Important: keeps name text left-aligned */
+    text-align: left;
 }
 
 .hero-profile-pic {
-    width: 55px; /* Reduced image size */
+    width: 55px;
     height: 80px;
     border-radius: 12px;
     vertical-align: middle;
@@ -122,10 +124,10 @@ body {
 }
 
 .hero-bio {
-    font-size: 1.15rem; /* Reduced font size */
+    font-size: 1.15rem;
     line-height: 1.5;
     color: var(--text-dark);
-    text-align: left; /* Important: keeps bio text left-aligned */
+    text-align: left;
     max-width: 480px;
     margin: 0;
     margin-bottom: 2rem;
@@ -139,76 +141,62 @@ body {
     text-decoration: none;
     font-weight: 400;
     display: inline-block;
-    transition: transform 0.2s ease;
     border: none;
     cursor: pointer;
     font-family: var(--font-main);
     font-size: 1rem;
+    transition: transform 0.2s ease; /* Put the transition back on the button */
 }
+
 .cta-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Put the hover effect back on the button */
 }
 
-.logo-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centered logos */
-    gap: 3rem; /* Reduced gap */
-    flex-wrap: wrap;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    max-width: 800px;
-}
-
-.client-logo {
-    height: 22px; /* Slightly smaller logos */
-}
 /* --- PROJECT CARDS --- */
 .project-item {
     width: 100%;
-    max-width: 700px; /* Reduced max-width for a more compact look */
+    max-width: 500px;
     margin: 0 auto;
     margin-bottom: 4rem;
 }
 
 .project-visual {
     width: 100%;
-    border-radius: 20px; /* The rounded corners from the design */
-    overflow: hidden; /* Ensures the media inside respects the border-radius */
-    margin-bottom: 1.5rem; /* Space between the visual and the title */
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    -webkit-backface-visibility: hidden; /* Fix for flickering/blinking on some browsers */
+    -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
 }
 
 .project-media {
-    display: block; /* Removes any extra space below the image/video */
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the media fills the container without distortion */
+    object-fit: cover;
 }
 
 .project-title {
     font-size: 1.5rem;
-    font-weight: 800; /* Bolder text */
+    font-weight: 800;
     color: var(--text-dark);
     margin-bottom: 0.5rem;
-    text-align: left; /* Keep text left-aligned */
+    text-align: left;
 }
 
 .project-description {
     font-size: 1.1rem;
     color: var(--text-light);
     max-width: 600px;
-    text-align: left; /* Keep text left-aligned */
+    text-align: left;
     line-height: 1.6;
 }
 
-/* Updated styling for the 'Coming Soon' card */
 .coming-soon-card {
-    background: #f0ece5; /* A subtle background color */
+    background: #f0ece5;
     border-radius: 20px;
     padding: 6rem 2rem;
     font-size: 1.3rem;
@@ -217,10 +205,10 @@ body {
     text-align: center;
 }
 
-/* EXPERIENCE SECTION */
+/* --- EXPERIENCE SECTION --- */
 .experience-section {
     width: 100%;
-    max-width: 700px; /* Reduced to match the project cards' width */
+    max-width: 550px;
     text-align: left;
 }
 .section-title {
@@ -262,30 +250,31 @@ body {
     z-index: 100;
     pointer-events: all;
 }
-.floating-elements-container :hover {
-    transform: scale(1.02);
-}
 
 .project-nav {
-    background: #4a4a4a; /* Solid dark grey background */
-    padding: 14px 28px; /* Adjusted padding for a better shape */
-    border-radius: 25px; /* The specific rounded shape from the image */
+    background: #4a4a4a;
+    padding: 14px 28px;
+    border-radius: 25px;
     display: flex;
-    gap: 30px; /* Increased space between links */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* A more prominent shadow */
+    gap: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease; /* Added transition for hover */
 }
 
-/* Style for the links inside the nav bar */
+.project-nav:hover {
+    transform: scale(1.05); /* Hover effect on the nav bar itself */
+}
+
 .project-nav a {
-    text-decoration: none; /* Remove underline */
-    color: #d3d3d3; /* A nice blue/purple color */
-    font-size: 16px; /* Larger font size */
+    text-decoration: none;
+    color: #8a9dff; /* Corrected color from your screenshot */
+    font-size: 16px;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
 .project-nav a:hover {
-    color: #ffffff; /* Change color on hover */
+    color: #ffffff;
 }
 
 .chat-fab {
@@ -432,49 +421,11 @@ form .form-group span {
     opacity: 0.9;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .top-bar {
-        display: none;
-    }
-    .content-container {
-        padding-top: 10vh;
-        gap: 8vh;
-    }
-    .hero-name {
-        font-size: 3.5rem;
-    }
-    .hero-bio {
-        font-size: 1rem;
-    }
-    .logo-section {
-        gap: 2.5rem;
-    }
-    .testimonials-section {
-        flex-direction: column;
-        gap: 3rem;
-    }
-    .floating-elements-container {
-        display: none;
-    }
-    .chat-fab {
-        right: 20px;
-        bottom: 20px;
-    }
-    .modal-content {
-        padding: 2rem 1.5rem;
-    }
-    form .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-}
 /* --- TECH STACK SCROLLER --- */
 .tech-scroller {
     max-width: 600px;
     width: 100%;
     overflow: hidden;
-    /* This creates the fade-out effect on the edges */
     -webkit-mask-image: linear-gradient(
         to right,
         transparent,
@@ -494,10 +445,9 @@ form .form-group span {
 .scroller-inner {
     display: flex;
     flex-wrap: nowrap;
-    gap: 2.5rem; /* Increased space between logos */
+    gap: 2.5rem;
 }
 
-/* This pauses the animation on hover */
 .scroller-inner:hover .tech-list {
     animation-play-state: paused;
 }
@@ -507,37 +457,35 @@ form .form-group span {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 2.5rem; /* Must match the gap in .scroller-inner */
-    animation: scroll 40s linear infinite; /* Increased duration for more items */
+    gap: 2.5rem;
+    animation: scroll 40s linear infinite;
 }
 
 .tech-list li {
     display: flex;
-    flex-direction: column; /* Stack icon and text vertically */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem; /* Space between icon and text */
-    width: 60px; /* Give a fixed width to prevent layout shifts */
+    gap: 0.5rem;
+    width: 60px;
 }
 
 .tech-list img {
-    height: 35px; /* Slightly smaller logos */
+    height: 35px;
     filter: grayscale(1);
     opacity: 0.7;
     transition: all 0.2s ease;
 }
 
-/* New style for the text below the icon */
 .tech-list span {
     font-size: 0.75rem;
     color: var(--text-light);
     font-weight: 500;
-    white-space: nowrap; /* Prevent text from wrapping */
-    opacity: 0; /* Initially hidden */
+    white-space: nowrap;
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-/* Updated hover effect for the entire list item */
 .tech-list li:hover img {
     filter: grayscale(0);
     opacity: 1;
@@ -545,10 +493,9 @@ form .form-group span {
 }
 
 .tech-list li:hover span {
-    opacity: 1; /* Make text visible on hover */
+    opacity: 1;
 }
 
-/* The Keyframes for the scrolling animation */
 @keyframes scroll {
     from {
         transform: translateX(0);
@@ -558,37 +505,19 @@ form .form-group span {
     }
 }
 
-/* Accessibility: Stop animation for users who prefer reduced motion */
-@media (prefers-reduced-motion) {
-    .scroller-inner {
-        justify-content: center;
-    }
-    .tech-list {
-        animation: none;
-        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-        justify-content: center;
-    }
-    .tech-list[aria-hidden="true"] {
-        display: none;
-    }
-    /* Make text visible if animations are off */
-    .tech-list span {
-        opacity: 1;
-    }
-}
 /* --- GET IN TOUCH SECTION --- */
 .get-in-touch-section {
     width: 100%;
-    max-width: 700px; /* Match other section widths */
+    max-width: 700px;
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem; /* Add space above this section */
-    border-top: 1px solid #e0e0e0; /* Add a subtle separator line */
+    margin-top: 4rem;
+    border-top: 1px solid #e0e0e0;
 }
 
 .get-in-touch-description {
     max-width: 500px;
-    margin: 0 auto 2rem; /* Center the text and add space below */
+    margin: 0 auto 2rem;
     color: var(--text-light);
     line-height: 1.6;
 }
@@ -620,4 +549,93 @@ form .form-group span {
     width: 24px;
     height: 24px;
     color: var(--text-dark);
+}
+
+/* --- ANIMATIONS --- */
+
+/* SCROLL-IN ANIMATION */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+}
+
+.fade-in-element.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HERO WELCOME ANIMATION */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-load {
+    opacity: 0; /* Start hidden */
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Staggered delays for the hero elements */
+.hero-intro-text.animate-on-load {
+    animation-delay: 0.2s;
+}
+.hero-name-wrapper.animate-on-load {
+    animation-delay: 0.4s;
+}
+.hero-bio.animate-on-load {
+    animation-delay: 0.6s;
+}
+.cta-button.animate-on-load {
+    animation-delay: 0.8s;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .top-bar {
+        display: none;
+    }
+    .content-container {
+        padding-top: 10vh;
+        gap: 8vh;
+    }
+    .hero-name {
+        font-size: 3.5rem;
+    }
+    .hero-bio {
+        font-size: 1rem;
+    }
+    .floating-elements-container {
+        display: none;
+    }
+    .chat-fab {
+        right: 20px;
+        bottom: 20px;
+    }
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+    form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .tech-list {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .tech-list[aria-hidden="true"] {
+        display: none;
+    }
+    .tech-list span {
+        opacity: 1;
+    }
 }

@@ -11,10 +11,38 @@ function updateTime() {
     second: "2-digit",
     hour12: false,
   });
-  timeWidget.textContent = `${timeString} SC, USA`;
+  timeWidget.textContent = `${timeString}`;
 }
 setInterval(updateTime, 1000);
 updateTime();
+
+// --- FLUID SCROLL-IN ANIMATIONS ---
+const scrollObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      // If the element is visible in the viewport
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        // Stop observing the element once it's visible to save resources
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.1, // Trigger when 10% of the element is visible
+  },
+);
+
+// Find all elements you want to animate on scroll
+const elementsToAnimate = document.querySelectorAll(
+  ".project-item, .experience-section, .get-in-touch-section",
+);
+
+// Start observing each element
+elementsToAnimate.forEach((element) => {
+  element.classList.add("fade-in-element"); // Add the initial hidden state
+  scrollObserver.observe(element);
+});
 
 // --- MODAL FUNCTIONALITY ---
 const modal = document.getElementById("project-modal");
