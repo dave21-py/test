@@ -163,83 +163,64 @@ body {
 .client-logo {
     height: 22px; /* Slightly smaller logos */
 }
-
-.testimonials-section {
-    display: flex;
-    gap: 4rem;
-    justify-content: center; /* Centered testimonials */
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.testimonial-item {
-    text-align: center; /* Centered testimonial text */
-}
-
-.testimonial-quote {
-    font-size: 1.1rem;
-    font-weight: 800;
-    margin-bottom: 0.25rem;
-}
-
-.testimonial-author {
-    color: var(--text-light);
-}
-
-.testimonial-avatar {
-    width: 60px; /* Reduced avatar size */
-    height: 60px;
-    border-radius: 50%;
-    margin-top: 1rem;
-}
-
 /* --- PROJECT CARDS --- */
-.project-card {
+.project-item {
     width: 100%;
-    max-width: 750px; /* Set a max-width for cards */
-    margin: 0 auto; /* Center the card itself */
-    text-align: left; /* Ensure text inside the card is left-aligned */
+    max-width: 700px; /* Reduced max-width for a more compact look */
+    margin: 0 auto;
+    margin-bottom: 4rem;
 }
 
-.project-image {
+.project-visual {
     width: 100%;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 20px; /* The rounded corners from the design */
+    overflow: hidden; /* Ensures the media inside respects the border-radius */
+    margin-bottom: 1.5rem; /* Space between the visual and the title */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    -webkit-backface-visibility: hidden; /* Fix for flickering/blinking on some browsers */
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+}
+
+.project-media {
+    display: block; /* Removes any extra space below the image/video */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the media fills the container without distortion */
 }
 
 .project-title {
-    font-size: 1.4rem; /* Reduced font size */
+    font-size: 1.5rem;
+    font-weight: 800; /* Bolder text */
+    color: var(--text-dark);
     margin-bottom: 0.5rem;
+    text-align: left; /* Keep text left-aligned */
 }
 
 .project-description {
-    font-size: 1.05rem; /* Reduced font size */
+    font-size: 1.1rem;
     color: var(--text-light);
     max-width: 600px;
-    margin: 0;
+    text-align: left; /* Keep text left-aligned */
+    line-height: 1.6;
 }
 
+/* Updated styling for the 'Coming Soon' card */
 .coming-soon-card {
-    background: linear-gradient(
-        135deg,
-        rgba(255, 185, 125, 0.4),
-        rgba(255, 85, 85, 0.6)
-    );
+    background: #f0ece5; /* A subtle background color */
     border-radius: 20px;
-    padding: 6rem 2rem; /* Reduced padding */
+    padding: 6rem 2rem;
     font-size: 1.3rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    text-align: center; /* Center text in this specific card */
+    color: var(--text-light);
+    text-align: center;
 }
 
 /* EXPERIENCE SECTION */
 .experience-section {
     width: 100%;
-    max-width: 750px;
+    max-width: 700px; /* Reduced to match the project cards' width */
     text-align: left;
 }
 .section-title {
