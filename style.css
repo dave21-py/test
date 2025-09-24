@@ -276,6 +276,9 @@ body {
 .project-nav a:hover {
     color: #ffffff;
 }
+.project-nav a.active {
+    color: #ffffff;
+}
 
 .chat-fab {
     position: fixed;

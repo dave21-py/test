@@ -16,6 +16,43 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
+// --- ACTIVE SECTION HIGHLIGHTING ---
+const sections = document.querySelectorAll("section[id], div[id].project-item");
+const navLinks = document.querySelectorAll(".project-nav a");
+
+const highlightObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Remove 'active' class from all links
+        navLinks.forEach((link) => link.classList.remove("active"));
+
+        // Find the link that corresponds to the visible section
+        const id = entry.target.getAttribute("id");
+        const correspondingLink = document.querySelector(
+          `.project-nav a[href="#${id}"]`,
+        );
+
+        // Add 'active' class to that link
+        if (correspondingLink) {
+          correspondingLink.classList.add("active");
+        }
+      }
+    });
+  },
+  {
+    // This new rootMargin creates a trigger area between 40% from the top
+    // and 40% from the bottom, which reliably catches the last section.
+    rootMargin: "-40% 0px -40% 0px",
+    threshold: 0,
+  },
+);
+
+// Start observing each section
+sections.forEach((section) => {
+  highlightObserver.observe(section);
+});
+
 // --- FLUID SCROLL-IN ANIMATIONS ---
 const scrollObserver = new IntersectionObserver(
   (entries) => {
