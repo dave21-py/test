@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Kshitij Choudhary</title>
+        <title>DG</title>
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,77 +15,223 @@
     <body>
         <!-- TOP FIXED HEADER -->
         <header class="top-bar">
-            <div class="location-widget">Bali, Indonesia</div>
+            <div class="location-widget">South Carolina, USA</div>
             <div class="email-widget">
                 <span class="online-dot"></span>
-                HELLO@KSHITIJ.WS
+                davidspurgeongeddam@gmail.com
             </div>
-            <div class="time-widget">17:32:53 Bali, ID</div>
+            <div id="time-widget" class="time-widget"></div>
         </header>
-
-        <!-- LEFT THEME SWITCHER -->
-        <aside class="theme-switcher">
-            <div class="theme-option active">Aa</div>
-            <div class="theme-option dark">Aa</div>
-            <div class="theme-option">Aa</div>
-            <div class="theme-option">Aa</div>
-            <div class="theme-option">Aa</div>
-        </aside>
 
         <!-- MAIN CONTENT -->
         <main class="content-container">
+            <!-- HERO SECTION -->
             <section class="hero-section">
-                <div class="hero-intro-text">Hey there, I am</div>
+                <div class="hero-intro-text">👋🏻 Hey there, I am</div>
                 <div class="hero-name-wrapper">
-                    <h1 class="hero-name">Kshitij<br />Choudhary</h1>
-                    <img
-                        src="https://i.imgur.com/3f4xZSb.png"
-                        alt="Kshitij Choudhary"
-                        class="hero-profile-pic"
-                    />
+                    <h1 class="hero-name">
+                        David
+                        <img src="images/memo.png" class="hero-profile-pic" />
+                        <br />
+                        Geddam
+                    </h1>
                 </div>
                 <p class="hero-bio">
-                    I am a multi-disciplinary designer & full-stack<br />
-                    developer helping founders build products<br />
-                    from idea to execution.
+                    I am a cs student & freelance developer actively learning<br />
+                    and coding. I'm interested in learning ML and GenAI🤖.<br />
+                    Also open to opportunites for upcoming summers.<br />
                 </p>
-                <a href="#" class="cta-button">Book a free discovery call</a>
+                <button id="open-modal-btn" class="cta-button">Resume</button>
             </section>
 
-            <section class="logo-section">
-                <img
-                    src="https://i.imgur.com/k6mJp4I.png"
-                    alt="Savage Logo"
-                    class="client-logo"
-                />
-                <img
-                    src="https://i.imgur.com/0F9oJ3x.png"
-                    alt="Hoist Logo"
-                    class="client-logo"
-                />
-                <img
-                    src="https://i.imgur.com/Q2x9aYl.png"
-                    alt="Stick by Google Logo"
-                    class="client-logo"
-                />
-                <img
-                    src="https://i.imgur.com/lZ6lA6V.png"
-                    alt="Olympic Channel Logo"
-                    class="client-logo"
-                />
-                <img
-                    src="https://i.imgur.com/z0X4E6N.png"
-                    alt="Ub Logo"
-                    class="client-logo"
-                />
-            </section>
+            <!-- TECH STACK SCROLLER -->
+            <div class="tech-scroller" data-speed="slow">
+                <div class="scroller-inner">
+                    <ul class="tech-list">
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                alt="Python"
+                            />
+                            <span>Python</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                alt="Java"
+                            />
+                            <span>Java</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                                alt="Pandas"
+                            />
+                            <span>Pandas</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                                alt="NumPy"
+                            />
+                            <span>NumPy</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                alt="Git"
+                            />
+                            <span>Git</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                alt="GitHub"
+                            />
+                            <span>GitHub</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                alt="Docker"
+                            />
+                            <span>Docker</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                                alt="Gemini API"
+                            />
+                            <span>Gemini API</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML5"
+                            />
+                            <span>HTML5</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+                                alt="Tailwind CSS"
+                            />
+                            <span>Tailwind CSS</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"
+                                alt="Matplotlib"
+                            />
+                            <span>Matplotlib</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                alt="JavaFX"
+                            />
+                            <span>JavaFX</span>
+                        </li>
+                    </ul>
+                    <!-- This second list is a duplicate for the infinite loop effect -->
+                    <ul class="tech-list" aria-hidden="true">
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                alt="Python"
+                            />
+                            <span>Python</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                alt="Java"
+                            />
+                            <span>Java</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                                alt="Pandas"
+                            />
+                            <span>Pandas</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                                alt="NumPy"
+                            />
+                            <span>NumPy</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                alt="Git"
+                            />
+                            <span>Git</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                alt="GitHub"
+                            />
+                            <span>GitHub</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                alt="Docker"
+                            />
+                            <span>Docker</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                                alt="Gemini API"
+                            />
+                            <span>Gemini API</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                alt="HTML5"
+                            />
+                            <span>HTML5</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+                                alt="Tailwind CSS"
+                            />
+                            <span>Tailwind CSS</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"
+                                alt="Matplotlib"
+                            />
+                            <span>Matplotlib</span>
+                        </li>
+                        <li>
+                            <img
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                alt="JavaFX"
+                            />
+                            <span>JavaFX</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
+            <!-- TESTIMONIALS SECTION -->
             <section class="testimonials-section">
                 <div class="testimonial-item">
-                    <p class="testimonial-quote">
-                        "KC is a very talented designer"
-                    </p>
-                    <p class="testimonial-author">Conner Pope, AdTrace</p>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">
+                            "KC is a very talented designer"
+                        </p>
+                        <p class="testimonial-author">Conner Pope, AdTrace</p>
+                    </div>
                     <img
                         src="https://i.imgur.com/RzUnTfL.jpeg"
                         alt="Conner Pope"
@@ -93,10 +239,14 @@
                     />
                 </div>
                 <div class="testimonial-item">
-                    <p class="testimonial-quote">
-                        "Guy codes AND designs FAST!"
-                    </p>
-                    <p class="testimonial-author">Ramon Berrios, Castmagic</p>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">
+                            "Guy codes AND designs FAST!"
+                        </p>
+                        <p class="testimonial-author">
+                            Ramon Berrios, Castmagic
+                        </p>
+                    </div>
                     <img
                         src="https://i.imgur.com/hBE5zws.jpeg"
                         alt="Ramon Berrios"
@@ -104,30 +254,201 @@
                     />
                 </div>
             </section>
+
+            <!-- PROJECT SECTIONS -->
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/B9hG4J6.png"
+                    alt="Lovefortune Project"
+                    class="project-image"
+                />
+                <h3 class="project-title">
+                    Lovefortune AI — Discover your love destiny
+                </h3>
+                <p class="project-description">
+                    Discover your love personality, find your perfect match, and
+                    explore compatibility with potential partners.
+                </p>
+            </section>
+
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/gSae9vC.png"
+                    alt="Adtrace AI Case Study"
+                    class="project-image"
+                />
+                <h3 class="project-title">
+                    Adtrace AI Case Study: $8K to $1M ARR Growth
+                </h3>
+                <p class="project-description">
+                    Tracking ads across the web is hard. AdTrace makes it easy.
+                </p>
+            </section>
+
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/bUNfS6j.png"
+                    alt="Babylon Wallet"
+                    class="project-image"
+                />
+                <h3 class="project-title">Babylon</h3>
+                <p class="project-description">
+                    Babylon is a next-gen gaming wallet for Web3.
+                </p>
+            </section>
+
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/JgbxPcv.png"
+                    alt="Siblings Agency"
+                    class="project-image"
+                />
+                <h3 class="project-title">Siblings Web3 Agency</h3>
+                <p class="project-description">
+                    Worked on several Web3 projects while working with Siblings.
+                </p>
+            </section>
+
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/p1aLfAg.png"
+                    alt="Canal Procurement"
+                    class="project-image"
+                />
+                <h3 class="project-title">Canal — Procurement</h3>
+                <p class="project-description">
+                    Canal helps enterprise companies centralise procurement.
+                </p>
+            </section>
+
+            <section class="project-card">
+                <img
+                    src="https://i.imgur.com/qg4e4xq.png"
+                    alt="Olympic Torch"
+                    class="project-image"
+                />
+                <h3 class="project-title">Torch — Olympics Channel</h3>
+                <p class="project-description">
+                    Helped design the experience for the PYEONGCHANG 2018 THE
+                    TORCH.
+                </p>
+            </section>
+
+            <section class="project-card coming-soon-card">
+                <p>More case studies coming soon.</p>
+            </section>
+
+            <!-- EXPERIENCE SECTION -->
+            <section class="experience-section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-item">
+                    <p>Design Co-Founder @ <strong>AdTrace (Acq.)</strong></p>
+                    <div class="experience-details">
+                        <span>2022-2025</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <p>Principal @ <strong>WKND</strong></p>
+                    <div class="experience-details">
+                        <span>2022-2021</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <p>Design Engineer @ <strong>Siblings</strong></p>
+                    <div class="experience-details">
+                        <span>2020-2021</span>
+                        <span class="arrow">↗</span>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- BOTTOM FLOATING ELEMENTS -->
         <div class="floating-elements-container">
-            <div class="project-preview-card">
-                <div class="project-nav">
-                    <span>Home</span>
-                    <span>About</span>
-                    <span>Work</span>
-                    <span>Shop</span>
-                    <span>X</span>
-                </div>
-            </div>
-            <a href="#" class="chat-fab">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                >
-                    <path
-                        d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
-                    />
-                </svg>
-            </a>
+            <nav class="project-nav">
+                <span>Home</span>
+                <span>About</span>
+                <span>Work</span>
+                <span>Shop</span>
+                <span>X</span>
+            </nav>
         </div>
+        <a href="#" class="chat-fab">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+            >
+                <path
+                    d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+                />
+            </svg>
+        </a>
+
+        <!-- PROJECT INQUIRY MODAL -->
+        <div id="project-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button id="close-modal-btn" class="close-button">
+                    &times;
+                </button>
+                <h3>Start Your Project</h3>
+                <p>Let's bring your ideas to life</p>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="John Doe"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                            />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website*</label>
+                        <input
+                            type="text"
+                            id="website"
+                            placeholder="https://example.com or 'No website yet'"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Project Goals*</label>
+                        <textarea
+                            id="goals"
+                            rows="4"
+                            placeholder="Describe your project goals..."
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget*</label>
+                        <select id="budget">
+                            <option disabled selected>
+                                Select budget range
+                            </option>
+                            <option value="5k-10k">$5,000 - $10,000</option>
+                            <option value="10k-20k">$10,000 - $20,000</option>
+                            <option value="20k+">$20,000+</option>
+                        </select>
+                        <span>All prices listed in USD</span>
+                    </div>
+                    <button type="submit" class="submit-inquiry-btn">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js" defer></script>
     </body>
 </html>
