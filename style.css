@@ -262,22 +262,30 @@ body {
     z-index: 100;
     pointer-events: all;
 }
+.floating-elements-container :hover {
+    transform: scale(1.02);
+}
 
 .project-nav {
-    background: rgba(29, 29, 29, 0.7);
-    color: #fff;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 12px 18px;
-    border-radius: 999px;
+    background: #4a4a4a; /* Solid dark grey background */
+    padding: 14px 28px; /* Adjusted padding for a better shape */
+    border-radius: 25px; /* The specific rounded shape from the image */
     display: flex;
-    gap: 25px;
-    font-size: 14px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 30px; /* Increased space between links */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* A more prominent shadow */
 }
-.project-nav span {
-    cursor: pointer;
+
+/* Style for the links inside the nav bar */
+.project-nav a {
+    text-decoration: none; /* Remove underline */
+    color: #d3d3d3; /* A nice blue/purple color */
+    font-size: 16px; /* Larger font size */
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.project-nav a:hover {
+    color: #ffffff; /* Change color on hover */
 }
 
 .chat-fab {
@@ -567,4 +575,49 @@ form .form-group span {
     .tech-list span {
         opacity: 1;
     }
+}
+/* --- GET IN TOUCH SECTION --- */
+.get-in-touch-section {
+    width: 100%;
+    max-width: 700px; /* Match other section widths */
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem; /* Add space above this section */
+    border-top: 1px solid #e0e0e0; /* Add a subtle separator line */
+}
+
+.get-in-touch-description {
+    max-width: 500px;
+    margin: 0 auto 2rem; /* Center the text and add space below */
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-link {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    background-color: #e0e0e0;
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-dark);
 }
