@@ -1,130 +1,137 @@
-// --- REAL-TIME CLOCK ---
-function updateTime() {
-  const timeWidget = document.getElementById("time-widget");
-  if (!timeWidget) return;
-  // Using a more specific locale for time in SC, USA if needed, or fallback
-  const now = new Date();
-  const timeString = now.toLocaleTimeString("en-US", {
-    timeZone: "America/New_York", // Example: Eastern Time
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  });
-  timeWidget.textContent = `${timeString}`;
-}
-setInterval(updateTime, 1000);
-updateTime();
+document.addEventListener("DOMContentLoaded", () => {
+  // --- SMOOTH SCROLL SETUP (LENIS & GSAP) ---
+  const lenis = new Lenis();
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-// --- ACTIVE SECTION HIGHLIGHTING ---
-const sections = document.querySelectorAll("section[id], div[id].project-item");
-const navLinks = document.querySelectorAll(".project-nav a");
-
-const highlightObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Remove 'active' class from all links
-        navLinks.forEach((link) => link.classList.remove("active"));
-
-        // Find the link that corresponds to the visible section
-        const id = entry.target.getAttribute("id");
-        const correspondingLink = document.querySelector(
-          `.project-nav a[href="#${id}"]`,
-        );
-
-        // Add 'active' class to that link
-        if (correspondingLink) {
-          correspondingLink.classList.add("active");
-        }
-      }
+  // --- REAL-TIME CLOCK ---
+  function updateTime() {
+    const timeWidget = document.getElementById("time-widget");
+    if (!timeWidget) return;
+    const now = new Date();
+    const timeString = now.toLocaleTimeString("en-US", {
+      timeZone: "America/New_York",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
     });
-  },
-  {
-    // This new rootMargin creates a trigger area between 40% from the top
-    // and 40% from the bottom, which reliably catches the last section.
-    rootMargin: "-40% 0px -40% 0px",
-    threshold: 0,
-  },
-);
+    timeWidget.textContent = `${timeString}`;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
 
-// Start observing each section
-sections.forEach((section) => {
-  highlightObserver.observe(section);
-});
-
-// --- FLUID SCROLL-IN ANIMATIONS ---
-const scrollObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      // If the element is visible in the viewport
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        // Stop observing the element once it's visible to save resources
-        scrollObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.1, // Trigger when 10% of the element is visible
-  },
-);
-
-// Find all elements you want to animate on scroll
-const elementsToAnimate = document.querySelectorAll(
-  ".project-item, .experience-section, .get-in-touch-section",
-);
-
-// Start observing each element
-elementsToAnimate.forEach((element) => {
-  element.classList.add("fade-in-element"); // Add the initial hidden state
-  scrollObserver.observe(element);
-});
-
-// --- MODAL FUNCTIONALITY ---
-const modal = document.getElementById("project-modal");
-const closeModalBtn = document.getElementById("close-modal-btn");
-const openModalFab = document.getElementById("open-modal-fab");
-
-const openModal = () => {
-  if (modal) modal.classList.add("visible");
-};
-const closeModal = () => {
-  if (modal) modal.classList.remove("visible");
-};
-
-// Event listeners for the modal
-if (closeModalBtn && modal && openModalFab) {
-  // Open modal when floating action button is clicked
-  openModalFab.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the link from jumping to the top of the page
-    openModal();
+  // --- FLUID PROJECT SCROLL-IN ANIMATIONS ---
+  const projectItems = document.querySelectorAll(".project-item");
+  projectItems.forEach((item) => {
+    gsap.fromTo(
+      item,
+      { y: 100, scale: 0.9 },
+      {
+        autoAlpha: 1, // Fades in and sets opacity to 1
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%", // Start animation when 90% from top of viewport
+          toggleActions: "play none none none", // Play animation once
+        },
+      },
+    );
   });
 
-  // Close modal when the 'x' button is clicked
-  closeModalBtn.addEventListener("click", closeModal);
+  // --- CUSTOM VIEW CURSOR & PROJECT HOVER ---
+  const cursor = document.querySelector(".view-cursor");
+  const hoverTriggerElements = document.querySelectorAll(".project-link");
+  const projectsWrapper = document.querySelector(".projects-wrapper");
 
-  // Close modal if the overlay is clicked
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
+  // Animate cursor to follow mouse
+  const xTo = gsap.quickTo(cursor, "x", { duration: 0.6, ease: "power3" });
+  const yTo = gsap.quickTo(cursor, "y", { duration: 0.6, ease: "power3" });
+  window.addEventListener("mousemove", (e) => {
+    xTo(e.clientX);
+    yTo(e.clientY);
   });
-}
 
-// --- SMOOTH SCROLLING FOR NAVIGATION ---
-document.querySelectorAll('.project-nav a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent the default jump
+  // Animate cursor on hover
+  hoverTriggerElements.forEach((el) => {
+    el.addEventListener("mouseenter", () =>
+      gsap.to(cursor, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: "power3.out",
+      }),
+    );
+    el.addEventListener("mouseleave", () =>
+      gsap.to(cursor, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power3.in",
+      }),
+    );
+  });
 
-    const targetId = this.getAttribute("href");
-    const targetElement = document.querySelector(targetId);
+  // Add class to projects-wrapper to blur other projects on hover
+  if (projectsWrapper) {
+    projectsWrapper.addEventListener("mouseenter", () =>
+      projectsWrapper.classList.add("is-hovered"),
+    );
+    projectsWrapper.addEventListener("mouseleave", () =>
+      projectsWrapper.classList.remove("is-hovered"),
+    );
+  }
 
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth", // The magic ingredient!
-        block: "start",
+  // --- SMOOTH SCROLLING FOR NAVIGATION ---
+  document.querySelectorAll('.project-nav a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      // Use Lenis to scroll smoothly
+      lenis.scrollTo(targetId, {
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
-    }
+    });
+  });
+
+  // --- ACTIVE SECTION HIGHLIGHTING (Remains the same) ---
+  const sections = document.querySelectorAll(
+    "section[id], div[id].projects-wrapper",
+  );
+  const navLinks = document.querySelectorAll(".project-nav a");
+
+  const highlightObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove("active"));
+          const id = entry.target.getAttribute("id");
+          const correspondingLink = document.querySelector(
+            `.project-nav a[href="#${id}"]`,
+          );
+          if (correspondingLink) {
+            correspondingLink.classList.add("active");
+          }
+        }
+      });
+    },
+    {
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
+    },
+  );
+  sections.forEach((section) => {
+    highlightObserver.observe(section);
   });
 });

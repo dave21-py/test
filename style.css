@@ -21,6 +21,19 @@
     padding: 0;
 }
 
+/* --- LENIS SMOOTH SCROLL STYLES --- */
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -36,6 +49,28 @@ body {
     overflow-x: hidden;
     color: var(--text-dark);
     transition: background-color 0.3s ease;
+}
+
+/* --- VIEW CURSOR --- */
+.view-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    will-change: transform, opacity;
 }
 
 /* --- TOP FIXED BAR --- */
@@ -145,19 +180,49 @@ body {
     cursor: pointer;
     font-family: var(--font-main);
     font-size: 1rem;
-    transition: transform 0.2s ease; /* Put the transition back on the button */
+    transition: transform 0.2s ease;
 }
 
 .cta-button:hover {
-    transform: scale(1.1); /* Put the hover effect back on the button */
+    transform: scale(1.1);
 }
 
 /* --- PROJECT CARDS --- */
+.projects-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; /* Replaces margin-bottom on project-item */
+}
+
+.project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: none; /* Hide default cursor */
+    transition:
+        opacity 0.4s ease,
+        filter 0.4s ease;
+}
+
 .project-item {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    margin-bottom: 4rem;
+    /* Opacity is now handled by GSAP for the animation */
+    opacity: 0;
+    visibility: hidden; /* Helps prevent interaction before animation */
+}
+
+/* New hover effect for blurring non-active projects */
+.projects-wrapper.is-hovered .project-link {
+    opacity: 0.5;
+    filter: blur(2px);
+}
+
+.projects-wrapper.is-hovered .project-link:hover {
+    opacity: 1;
+    filter: blur(0);
 }
 
 .project-visual {
@@ -170,6 +235,11 @@ body {
     -moz-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-link:hover .project-visual {
+    transform: scale(1.03);
 }
 
 .project-media {
@@ -182,7 +252,6 @@ body {
 .project-title {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--text-dark);
     margin-bottom: 0.5rem;
     text-align: left;
 }
@@ -193,16 +262,6 @@ body {
     max-width: 600px;
     text-align: left;
     line-height: 1.6;
-}
-
-.coming-soon-card {
-    background: #f0ece5;
-    border-radius: 20px;
-    padding: 6rem 2rem;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text-light);
-    text-align: center;
 }
 
 /* --- EXPERIENCE SECTION --- */
@@ -258,16 +317,16 @@ body {
     display: flex;
     gap: 30px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease; /* Added transition for hover */
+    transition: transform 0.2s ease;
 }
 
 .project-nav:hover {
-    transform: scale(1.05); /* Hover effect on the nav bar itself */
+    transform: scale(1.05);
 }
 
 .project-nav a {
     text-decoration: none;
-    color: #8a9dff; /* Corrected color from your screenshot */
+    color: #8a9dff;
     font-size: 16px;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -278,150 +337,6 @@ body {
 }
 .project-nav a.active {
     color: #ffffff;
-}
-
-.chat-fab {
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--text-dark);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    pointer-events: all;
-    transition: transform 0.2s ease;
-    z-index: 100;
-}
-.chat-fab:hover {
-    transform: scale(1.1);
-}
-
-.chat-fab svg {
-    width: 28px;
-    height: 28px;
-    fill: #fff;
-}
-
-/* --- PROJECT MODAL --- */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    z-index: 200;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-.modal-overlay.visible {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.modal-content {
-    background: var(--modal-bg);
-    color: var(--modal-text);
-    padding: 2.5rem;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 550px;
-    position: relative;
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
-}
-.modal-overlay.visible .modal-content {
-    transform: scale(1);
-}
-
-.modal-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-.modal-content > p {
-    color: var(--modal-text-light);
-    margin-bottom: 2rem;
-}
-
-.close-button {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--modal-text-light);
-    font-size: 2.5rem;
-    line-height: 1;
-    cursor: pointer;
-}
-
-form .form-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-form .form-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-form label {
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-form input,
-form textarea,
-form select {
-    background: var(--modal-input-bg);
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 12px;
-    color: var(--modal-text);
-    font-family: var(--font-main);
-    font-size: 1rem;
-    width: 100%;
-}
-form input::placeholder,
-form textarea::placeholder {
-    color: #888;
-}
-form select {
-    -webkit-appearance: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708 .708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-}
-form .form-group span {
-    font-size: 0.8rem;
-    color: var(--modal-text-light);
-    margin-top: 0.5rem;
-}
-.submit-inquiry-btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--modal-text);
-    color: var(--modal-bg);
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: opacity 0.2s;
-}
-.submit-inquiry-btn:hover {
-    opacity: 0.9;
 }
 
 /* --- TECH STACK SCROLLER --- */
@@ -556,19 +471,7 @@ form .form-group span {
 
 /* --- ANIMATIONS --- */
 
-/* SCROLL-IN ANIMATION */
-.fade-in-element {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.6s ease-out,
-        transform 0.6s ease-out;
-}
-
-.fade-in-element.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* REMOVED .fade-in-element as it is now handled by GSAP (JavaScript) */
 
 /* HERO WELCOME ANIMATION */
 @keyframes fadeInUp {
@@ -619,17 +522,6 @@ form .form-group span {
     .floating-elements-container {
         display: none;
     }
-    .chat-fab {
-        right: 20px;
-        bottom: 20px;
-    }
-    .modal-content {
-        padding: 2rem 1.5rem;
-    }
-    form .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
     .tech-list {
         animation: none;
         flex-wrap: wrap;
@@ -640,5 +532,9 @@ form .form-group span {
     }
     .tech-list span {
         opacity: 1;
+    }
+    /* Hide the custom cursor on mobile as there's no hover */
+    .view-cursor {
+        display: none;
     }
 }
